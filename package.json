@@ -1,0 +1,53 @@
+{
+  "name": "kuman",
+  "version": "0.0.0",
+  "description": "delivery web application for Kasetsart University",
+  "main": "server.js",
+  "scripts": {
+    "dev": "better-npm-run dev"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "nodemon ./server",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chinclubi/KUMAN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chinclubi/KUMAN/issues"
+  },
+  "homepage": "https://github.com/chinclubi/KUMAN#readme",
+  "dependencies": {
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-register": "^6.24.1",
+    "body-parser": "^1.17.1",
+    "config": "^1.25.1",
+    "express": "^4.15.2",
+    "graphql": "^0.9.3",
+    "graphql-server-express": "^0.7.1",
+    "js-yaml": "^3.8.3",
+    "react": "^15.5.4",
+    "react-apollo": "^1.0.1",
+    "react-dom": "^15.5.4",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "better-npm-run": "0.0.15",
+    "nodemon": "^1.11.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "webpack": "^2.4.1",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.18.0"
+  }
+}
