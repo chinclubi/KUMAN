@@ -1,4 +1,4 @@
-import App from './App.react'
+import App from './Root.react'
 import { AppContainer } from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -15,7 +15,5 @@ const render = (Component) => {
 render(App)
 
 if(module.hot) {
-    module.hot.accept('./App.react', () => {
-        render(App)
-    })    
+    module.hot.accept('./Root.react', () => render(App))
 }

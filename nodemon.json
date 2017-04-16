@@ -1,0 +1,9 @@
+{
+    "verbose": false,
+    "watch": [
+        "src/server",
+        "config",
+        "./webpack.config.dev.js"
+    ],
+    "exec": "node server.js"
+}

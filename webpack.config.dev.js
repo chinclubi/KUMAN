@@ -1,16 +1,19 @@
+import AssetsPlugin from 'assets-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 
 export default {
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     entry: [
-        'webpack-hot-middleware/client',
-        path.resolve(__dirname, 'src/client/dev')
+        'react-hot-loader/patch',
+        'webpack-hot-middleware/client?http://localhost:3000/build',
+        path.join(__dirname, 'src/client/dev')
     ],
     output: {
-        filename: '[name].[hash].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        filename: '[name].js',
+        chunkFilename: '[name].chunk.js',
+        path: path.join(__dirname, 'static', 'build'),
+        publicPath: '/build/'
     },
     module: {
         rules: [
@@ -23,15 +26,23 @@ export default {
                         'react'
                     ],
                     plugins: [
-                        'react-hot-loader/babel'
-                    ]
+                        'react-hot-loader/babel',
+                        'transform-decorators-legacy'
+                    ],
+                    cacheDirectory: false
                 },
-                exclude: /node_modules/
+                include: path.resolve(__dirname, 'src'),
+                exclude: path.resolve(__dirname, 'node_modules')
             }
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NamedModulesPlugin(),
+        new AssetsPlugin({
+            filename: 'assets.json',
+            path: path.join(__dirname, 'static'),
+            prettyPrint: true
+        })
     ]
 }
