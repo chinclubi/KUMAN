@@ -17,18 +17,17 @@ const compiler = webpack(webpackConfig)
 
 app.use(express.static(path.resolve(process.cwd(), 'static')))
 
-app.use(bodyParser.json())
-
-app.use('/graphql', graphqlExpress({ schema }))
-app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql'}))
-
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath
 }))
-app.use(webpackHotMiddleware(compiler, {
-    path: '/__webpack_hmr'
-}))
+app.use(webpackHotMiddleware(compiler))
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+app.use('/graphql', graphqlExpress({ schema }))
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql'}))
 
 app.use(handleRender)
 

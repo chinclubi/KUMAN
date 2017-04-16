@@ -1,7 +1,7 @@
-import App from './Root.react'
 import { AppContainer } from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Root from './Root.react'
 
 const render = (Component) => {
     ReactDOM.render(
@@ -12,8 +12,8 @@ const render = (Component) => {
     )
 }
 
-render(App)
+render(Root)
 
 if(module.hot) {
-    module.hot.accept('./Root.react', () => render(App))
+    module.hot.accept('./Root.react', () => render(Root))
 }

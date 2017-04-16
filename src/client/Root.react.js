@@ -5,6 +5,7 @@ import {
 } from 'react-apollo'
 
 import AppComponent from '../shared/core/App.react'
+import { BrowserRouter } from 'react-router-dom'
 import React from 'react'
 
 const client = new ApolloClient({
@@ -19,7 +20,9 @@ const client = new ApolloClient({
 
 const Root =() => (
     <ApolloProvider client={client}>
-        <AppComponent />
+        <BrowserRouter>
+            <AppComponent />
+        </BrowserRouter>
     </ApolloProvider>
 )
 

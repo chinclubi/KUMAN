@@ -3,11 +3,11 @@ import path from 'path'
 import webpack from 'webpack'
 
 export default {
-    devtool: 'inline-source-map',
+    devtool: 'eval',
     entry: [
         'react-hot-loader/patch',
-        'webpack-hot-middleware/client?http://localhost:3000/build',
-        path.join(__dirname, 'src/client/dev')
+        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+        path.join(__dirname, 'src/client/client.dev.js')
     ],
     output: {
         filename: '[name].js',
@@ -18,27 +18,27 @@ export default {
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.js$/,
                 loader: 'babel-loader',
                 options: {
+                    babelrc: false,
                     presets: [
-                        ['es2015', { module: false }],
-                        'react'
+                        ['es2015', { modules: false }],
+                        'react',
                     ],
                     plugins: [
-                        'react-hot-loader/babel',
-                        'transform-decorators-legacy'
+                        'react-hot-loader/babel'
                     ],
-                    cacheDirectory: false
+                    cacheDirectory: true
                 },
-                include: path.resolve(__dirname, 'src'),
-                exclude: path.resolve(__dirname, 'node_modules')
+                include: path.resolve(__dirname, 'src')
             }
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new AssetsPlugin({
             filename: 'assets.json',
             path: path.join(__dirname, 'static'),

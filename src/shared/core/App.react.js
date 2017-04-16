@@ -1,23 +1,12 @@
-import React, { Component } from 'react'
-import { gql, graphql } from 'react-apollo'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
-import { compose } from 'recompose'
+import MainPage from './MainPage.react'
+import React from 'react'
 
-const AppQuery = gql`
-query {
-    user {
-        test
-    }
-}
-`
-const enhance = compose(
-    graphql(AppQuery)
+const App = () => (
+  <Switch>
+    <Route exact path='/index' component={MainPage} />
+  </Switch>
 )
 
-class App extends Component {
-    render() {
-        return <div>Hello KUMAN 3 query test = {this.props.data.user.test}</div>
-    }
-}
-
-export default enhance(App)
+export default App
