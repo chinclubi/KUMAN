@@ -3,9 +3,11 @@ services:
   database:
     image: mariadb:latest
     environment:
-    - MYSQL_ROOT_PASSWORD: kuman-db-password
-    - MYSQL_DATABASE: kuman
-  volumes:
+    - MYSQL_ROOT_PASSWORD=kuman-db-password
+    - MYSQL_DATABASE=kuman
+    ports:
+    - 3306:3306
+    volumes: 
     - kuman-data:/data
-volumns:
+volumes:
   kuman-data: {}
