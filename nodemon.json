@@ -2,8 +2,12 @@
     "verbose": false,
     "watch": [
         "src/server",
-        "config",
-        "./webpack.config.dev.js"
+        "config"
     ],
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules"
+    ],
+    "ext": "js json styl",
     "exec": "node server.js"
 }

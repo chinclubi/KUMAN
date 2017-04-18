@@ -7,7 +7,7 @@ import {
     renderToStringWithData,
 } from 'react-apollo'
 
-import AppComponent from '../../shared/core/App.react'
+import AppComponent from '../../shared/km-core/App.react'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router'

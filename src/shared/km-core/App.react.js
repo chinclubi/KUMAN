@@ -5,7 +5,7 @@ import React from 'react'
 
 const App = () => (
   <Switch>
-    <Route exact path='/index' component={MainPage} />
+    <Route exact path='/' component={MainPage} />
   </Switch>
 )
 

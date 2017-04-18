@@ -4,7 +4,7 @@ import {
     createNetworkInterface,
 } from 'react-apollo'
 
-import AppComponent from '../shared/core/App.react'
+import AppComponent from '../shared/km-core/App.react'
 import { BrowserRouter } from 'react-router-dom'
 import React from 'react'
 

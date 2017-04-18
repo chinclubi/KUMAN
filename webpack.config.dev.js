@@ -1,4 +1,5 @@
 import AssetsPlugin from 'assets-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 
@@ -20,6 +21,7 @@ export default {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                exclude: /node_modules/,
                 options: {
                     babelrc: false,
                     presets: [
@@ -30,8 +32,24 @@ export default {
                         'react-hot-loader/babel'
                     ],
                     cacheDirectory: true
-                },
-                include: path.resolve(__dirname, 'src')
+                }
+            }, {
+                test: /\.styl$/,
+                exclude: /node_modules/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                            modules: true,
+                            localIdentName: '[name]__[local]--[hash:base64:5]'
+                        }
+                    },
+                    {
+                        loader: 'stylus-loader'
+                    }
+                ]
             }
         ]
     },
@@ -43,6 +61,10 @@ export default {
             filename: 'assets.json',
             path: path.join(__dirname, 'static'),
             prettyPrint: true
+        }),
+        new ExtractTextPlugin({
+            allChunks: true,
+            filename: '[id]-[name]-[contenthash].css'
         })
     ]
 }
