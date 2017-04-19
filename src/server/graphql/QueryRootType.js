@@ -11,9 +11,10 @@ const RootQueryType = new GraphQLObjectType({
     restaurants: {
       type: new GraphQLList(Restaurant),
       resolve: async () => ([
-        { name: 'Chin Restaurant', image: 'https://source.unsplash.com/collection/622228/1280x960', place: 'Faculty of Engineer' },
-        { name: 'Chin Restaurant', image: 'https://source.unsplash.com/collection/622228/1280x960', place: 'Faculty of Business' },
-        { name: 'Chin Restaurant', image: 'https://source.unsplash.com/collection/622228/1280x960', place: 'Faculty of Business' }
+        { name: 'Chin Restaurant', image: `https://source.unsplash.com/collection/622228/1280x960?sig=${Math.random()}`, place: 'Faculty of Engineer' },
+        { name: 'Chin Restaurant', image: `https://source.unsplash.com/collection/622228/1280x960?sig=${Math.random()}`, place: 'Faculty of Business' },
+        { name: 'Chin Restaurant', image: `https://source.unsplash.com/collection/622228/1280x960?sig=${Math.random()}`, place: 'Faculty of Business' },
+        { name: 'Chin Restaurant', image: `https://source.unsplash.com/collection/622228/1280x960?sig=${Math.random()}`, place: 'Faculty of Business' }
       ])
     }
   }

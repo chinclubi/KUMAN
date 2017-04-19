@@ -1,14 +1,21 @@
 import React from 'react'
+import className from 'classnames'
+import styles from './BigHero.styl'
 
 const Hero = () => (
-  <section className='hero is-medium is-primary is-bold'>
+  <section className={className(
+    styles.hero, 'hero', 'is-medium', 'is-primary', 'is-bold'
+  )}>
     <div className='hero-body'>
       <div className='container'>
-        <h1 className='title'>
-          Primary bold title
+        <h1 className={className(
+          styles.hero__title,
+          'title'
+        )}>
+          FREE SHIPPING CHARGE!
         </h1>
         <h2 className='subtitle'>
-          Primary bold subtitle
+          UNTIL 30 APRIL
         </h2>
       </div>
     </div>

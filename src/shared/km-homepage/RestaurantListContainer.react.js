@@ -22,7 +22,7 @@ const enhance = compose(
 
 const RestaurantListContainer = (props) => (
   <div className='section container'>
-    <div className='columns'>
+    <div className='columns is-multiline'>
       {props.data.restaurants.map(
         (restaurant, i) => <Restaurant key={i} restaurant={restaurant} />
       )}
