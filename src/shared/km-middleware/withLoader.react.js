@@ -10,9 +10,9 @@ const withLoader = (Component) => {
     }
     render () {
       if (this.props.data.loading) {
-        
+        return <div className='is-loading' />
       } else {
-        <Component {} />
+        return <Component {...this.props} />
       }
     }
   }

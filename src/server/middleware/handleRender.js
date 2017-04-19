@@ -50,9 +50,9 @@ const Html = ({ content, state, assets }) => (
   <html>
     <head>
       <title>KUMAN</title>
-      <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' />
-      <link href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css' ref='stylesheet' />
-      <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' />
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,400,700' />
+      <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css' />
     </head>
     <body>
       <div id='root' dangerouslySetInnerHTML={{ __html: content }} />

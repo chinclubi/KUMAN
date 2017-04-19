@@ -1,41 +1,21 @@
 import React, { Component } from 'react'
-import { gql, graphql } from 'react-apollo'
 
+import BigHero from '../km-banners/BigHero.react'
+import Footer from '../km-footer/Footer.react'
 import Navbar from '../km-uikits/Navbar.react'
-import PropTypes from 'prop-types'
-import { compose } from 'recompose'
-import styles from './MainPage.styl'
-
-const AppQuery = gql`
-query {
-    user {
-        test
-    }
-}
-`
-const enhance = compose(
-    graphql(AppQuery)
-)
+import RestaurantList from '../km-homepage/RestaurantListContainer.react'
 
 class MainPage extends Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      user: PropTypes.shape({
-        test: PropTypes.bool.isRequired
-      }).isRequired,
-    }).isRequired
-  }
-
   render () {
     return (
       <div>
         <Navbar />
-        <h1 className={styles.test}>
-            KUMAN Simple query test {String(this.props.data.user.test)}
-        </h1>
+        <BigHero />
+        <RestaurantList />
+        <Footer />
       </div>
     )
   }
 }
 
-export default enhance(MainPage)
+export default MainPage
