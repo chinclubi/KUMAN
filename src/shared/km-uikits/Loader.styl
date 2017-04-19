@@ -1,0 +1,37 @@
+$big-size = 50px
+$small-size = 18px
+$border-size = 5px
+$small-border-size = 3px
+
+$duration = 1000ms
+
+@keyframes spinAround
+  from
+    transform rotate(0deg)
+
+  to
+    transform rotate(360deg)
+
+.loader
+
+  &:before
+    display block
+    margin 10px
+    width $size
+    height $size
+    border $border-size solid c-gray50
+    border-top-color c-gray500
+    border-radius 50%
+    content ''
+    animation spinAround $duration infinite linear
+    pointer-events none
+
+  &.\\--small &
+    &:before
+      margin 0
+      width $small-size
+      height $small-size
+      border-width $small-border-size
+
+  &__message
+    margin-top 20px

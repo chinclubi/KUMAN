@@ -4,7 +4,8 @@
   "description": "delivery web application for Kasetsart University",
   "main": "server.js",
   "scripts": {
-    "dev": "better-npm-run dev"
+    "dev": "better-npm-run dev",
+    "storybook": "start-storybook -s ./static -p 9001 -c .storybook"
   },
   "betterScripts": {
     "dev": {
@@ -51,6 +52,7 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.35.3",
     "babel-eslint": "^7.2.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.24.1",
