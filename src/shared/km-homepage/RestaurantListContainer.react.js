@@ -1,5 +1,6 @@
 import { gql, graphql } from 'react-apollo'
 
+import BigHero from '../km-banners/BigHero.react'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Restaurant from '../km-restaurants/Restaurant.react'
@@ -22,13 +23,16 @@ const enhance = compose(
 )
 
 const RestaurantListContainer = (props) => (
-  <div className='section container'>
-    <div className='columns is-multiline'>
-      {props.data.restaurants.map(
-        (restaurant, i) => <Restaurant key={i} restaurant={restaurant} />
-      )}
+  <section>
+    <BigHero />
+    <div className='section container'>
+      <div className='columns is-multiline'>
+        {props.data.restaurants.map(
+          (restaurant, i) => <Restaurant key={i} restaurant={restaurant} />
+        )}
+      </div>
     </div>
-  </div>
+  </section>
 )
 
 RestaurantListContainer.propTypes = {

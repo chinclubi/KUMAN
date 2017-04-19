@@ -1,5 +1,8 @@
+import BigHero from '../km-banners/BigHero.react'
 import PropTypes from 'prop-types'
 import React from 'react'
+import className from 'classnames'
+import styles from './RestaurantPage.styl'
 
 class RestaurantPage extends React.Component {
   static propTypes = {
@@ -15,18 +18,11 @@ class RestaurantPage extends React.Component {
     const { restaurant } = this.props
     return (
       <section>
-        <section className='hero is-primary'>
-          <div className='hero-body'>
-            <div className='container'>
-              <h1 className='title'>
-                {restaurant.name}
-              </h1>
-              <h2 className='subtitle'>
-                @{restaurant.place}
-              </h2>
-            </div>
-          </div>
-        </section>
+        <BigHero
+          background={restaurant.image}
+          title={restaurant.name}
+          subtitle={`@${restaurant.place}`}
+        />
         <div className='container'>
           RestaurantPage
         </div>
