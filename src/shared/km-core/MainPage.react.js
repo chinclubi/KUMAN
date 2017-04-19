@@ -5,7 +5,7 @@ import Footer from '../km-footer/Footer.react'
 import Navbar from '../km-uikits/Navbar.react'
 import PropTypes from 'prop-types'
 import RestaurantList from '../km-homepage/RestaurantListContainer.react'
-import RestaurantPage from '../km-restaurants/RestaurantPage.react'
+import RestaurantPage from '../km-restaurants/RestaurantPageContainer.react'
 import { Route } from 'react-router-dom'
 
 class MainPage extends Component {
@@ -22,7 +22,7 @@ class MainPage extends Component {
         <Navbar />
         <BigHero />
         <Route exact path={`${match.url}`} component={RestaurantList} />
-        <Route path={`${match.url}:restaurantId`} render={() => <RestaurantPage />} />
+        <Route path={`${match.url}:restaurantId`} component={RestaurantPage} />
         <Footer />
       </div>
     )

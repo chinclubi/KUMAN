@@ -13,7 +13,11 @@ const RestaurantItem = ({ restaurant }) => {
         <div className='card-content'>
           <div className='media'>
             <div className='media-content'>
-              <p className='title is-4'>{restaurant.name}</p>
+              <p className='title is-4'>
+                <a href={`/${restaurant.id}`}>
+                  {restaurant.name}
+                </a>
+              </p>
               <p className='subtitle is-6'>@{restaurant.place}</p>
             </div>
           </div>

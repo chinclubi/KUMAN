@@ -4,7 +4,7 @@ const Navbar = (props) => (
   <nav className='nav has-shadow'>
     <div className='container'>
       <div className='nav-left'>
-        <a className='nav-item'>
+        <a href='/' className='nav-item'>
           <img src='/logo.png' />
         </a>
       </div>

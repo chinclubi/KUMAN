@@ -9,6 +9,7 @@ import withLoader from '../km-middleware/withLoader.react'
 const RestaurantListQuery = gql`
   query {
     restaurants {
+      id
       name
       image
       place
