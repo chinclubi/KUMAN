@@ -14,6 +14,11 @@ const RestaurantQuery = gql`
       image
       place
     }
+    menus (restaurantId: $restaurantId) {
+      name
+      price
+      thumbnail
+    }
   }
 `
 const enhance = compose(
@@ -27,8 +32,8 @@ const enhance = compose(
   withLoader
 )
 
-const RestaurantPageContainer = ({ data: { loading, restaurant }, match }) => (
-  <RestaurantPage restaurant={restaurant} />
+const RestaurantPageContainer = ({ data: { restaurant, menus }, match }) => (
+  <RestaurantPage restaurant={restaurant} menus={menus} />
 )
 
 RestaurantPageContainer.propTypes = {
@@ -41,7 +46,12 @@ RestaurantPageContainer.propTypes = {
       name: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,
       place: PropTypes.string.isRequired
-    })
+    }),
+    menus: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      thumbnail: PropTypes.string.isRequired
+    }))
   })
 }
 

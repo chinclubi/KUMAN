@@ -1,8 +1,7 @@
 import BigHero from '../km-banners/BigHero.react'
+import Menu from '../km-menus/Menu.react'
 import PropTypes from 'prop-types'
 import React from 'react'
-import className from 'classnames'
-import styles from './RestaurantPage.styl'
 
 class RestaurantPage extends React.Component {
   static propTypes = {
@@ -11,11 +10,16 @@ class RestaurantPage extends React.Component {
       name: PropTypes.string.isRequired,
       place: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired
-    })
+    }),
+    menus: PropTypes.array.isRequired
   }
 
+  renderMenuList = (menus) => (
+    menus.map((menu, i) => <Menu key={i} menu={menu} />)
+  )
+
   render () {
-    const { restaurant } = this.props
+    const { restaurant, menus } = this.props
     return (
       <section>
         <BigHero
@@ -23,8 +27,10 @@ class RestaurantPage extends React.Component {
           title={restaurant.name}
           subtitle={`@${restaurant.place}`}
         />
-        <div className='container'>
-          RestaurantPage
+        <div className='section container'>
+          <div className='columns is-multiline'>
+            {this.renderMenuList(menus)}
+          </div>
         </div>
       </section>
     )

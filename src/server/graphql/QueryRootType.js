@@ -4,6 +4,7 @@ import {
     GraphQLString,
 } from 'graphql'
 
+import Menu from './types/MenuType'
 import Restaurant from './types/RestaurantType'
 import _ from 'lodash'
 import query from '../sql/query'
@@ -24,15 +25,26 @@ const RootQueryType = new GraphQLObjectType({
       type: new GraphQLList(Restaurant),
       resolve: async (parent, { limit = 12 }) => {
         const restaurants = await query(`SELECT * FROM restaurants LIMIT ${limit}`)
-        _.transform(restaurants, (result, restaurant) => {
-          restaurant.image = addSigToImgUrl(restaurant.image)
-          result.push(restaurant)
-        }, [])
-        return restaurants
+        return transformImageUrl(restaurants, 'image')
+      }
+    },
+    menus: {
+      type: new GraphQLList(Menu),
+      args: { restaurantId: { type: GraphQLString } },
+      resolve: async (parent, { restaurantId }) => {
+        const menus = await query(`SELECT * FROM menus WHERE restaurantId=${restaurantId}`)
+        return transformImageUrl(menus, 'thumbnail')
       }
     }
   }
 })
+
+const transformImageUrl = (list, keyName) => {
+  return _.transform(list, (result, element) => {
+    element[keyName] = addSigToImgUrl(element[keyName])
+    result.push(element)
+  }, [])
+}
 
 const addSigToImgUrl = (imgUrl) => {
   imgUrl = url.parse(imgUrl, true, false)
