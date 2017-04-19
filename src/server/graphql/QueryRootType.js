@@ -17,7 +17,7 @@ const RootQueryType = new GraphQLObjectType({
       type: Restaurant,
       args: { restaurantId: { type: GraphQLString } },
       resolve: async (parent, { restaurantId }) => {
-        const result = await query(`SELECT * FROM restaurants WHERE id=${restaurantId}`)
+        const result = await query(`SELECT * FROM restaurants AS res WHERE res.id='${restaurantId}'`)
         return _.head(result)
       }
     },
@@ -32,23 +32,23 @@ const RootQueryType = new GraphQLObjectType({
       type: new GraphQLList(Menu),
       args: { restaurantId: { type: GraphQLString } },
       resolve: async (parent, { restaurantId }) => {
-        const menus = await query(`SELECT * FROM menus WHERE restaurantId=${restaurantId}`)
+        const menus = await query(`SELECT * FROM menus AS m WHERE m.restaurantId='${restaurantId}'`)
         return transformImageUrl(menus, 'thumbnail')
       }
     }
   }
 })
 
-const transformImageUrl = (list, keyName) => {
-  return _.transform(list, (result, element) => {
+const transformImageUrl = (list, keyName) => (
+  _.transform(list, (result, element) => {
     element[keyName] = addSigToImgUrl(element[keyName])
     result.push(element)
   }, [])
-}
+)
 
 const addSigToImgUrl = (imgUrl) => {
   imgUrl = url.parse(imgUrl, true, false)
-  imgUrl.query['sig'] = Math.random()
+  imgUrl.query['sig'] = Math.floor(Math.random() * 100)
   return url.format(imgUrl)
 }
 

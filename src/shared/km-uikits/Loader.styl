@@ -13,14 +13,18 @@ $duration = 1000ms
     transform rotate(360deg)
 
 .loader
+  display flex
+  justify-content center
+  align-items center
+  flex-direction column
 
   &:before
     display block
     margin 10px
-    width $size
-    height $size
-    border $border-size solid c-gray50
-    border-top-color c-gray500
+    width $big-size
+    height $big-size
+    border $border-size solid #f4f4f5
+    border-top-color #6c6e7e
     border-radius 50%
     content ''
     animation spinAround $duration infinite linear
@@ -34,4 +38,5 @@ $duration = 1000ms
       border-width $small-border-size
 
   &__message
+    text-align center
     margin-top 20px
