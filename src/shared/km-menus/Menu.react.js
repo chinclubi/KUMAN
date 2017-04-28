@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const Menu = ({ menu: { name, price, thumbnail } }) => (
-  <div className='column'>
+  <div className='column is-one-third'>
     <div className='box'>
       <article className='media'>
         <div className='media-left'>
@@ -25,12 +25,6 @@ const Menu = ({ menu: { name, price, thumbnail } }) => (
                   <i className='fa fa-cart-plus' />
                 </span>
                 <span>ADD</span>
-              </a>
-              <a className='level-item'>
-                <span className='icon'>
-                  <i className='fa fa-heart' />
-                </span>
-                <span>FAVORITE</span>
               </a>
             </div>
           </nav>
