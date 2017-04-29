@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
 const Navbar = (props) => (
@@ -13,7 +14,7 @@ const Navbar = (props) => (
           <span className='icon is-danger' style={{ marginRight: '8px' }}>
             <i className='fa fa-shopping-cart' />
           </span>
-          <span>0</span>
+          <span>{props.carts.length}</span>
         </a>
         <a className='nav-item is-tab'>
           <span className='icon is-danger' style={{ marginRight: '8px' }}>
@@ -28,5 +29,9 @@ const Navbar = (props) => (
     </div>
   </nav>
 )
+
+Navbar.propTypes = {
+  carts: PropTypes.array.isRequired
+}
 
 export default Navbar
