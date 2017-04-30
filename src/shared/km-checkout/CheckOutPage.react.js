@@ -1,20 +1,42 @@
 import Map from './GoogleMap.react'
+import OrderList from './OrderList.react'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './CheckOutPage.styl'
 
 const MapContainer = <div className={styles.km__map} />
 
-const CheckOutPage = (props) => {
-  return (
-    <section className='hero is-primary is-medium'>
-      <Map
-        containerElement={MapContainer}
-        mapElement={MapContainer}
-      >
-        <div className={styles.km__point} />
-      </Map>
-    </section>
-  )
+const CheckOutPage = (props) => (
+  <section>
+    <Map
+      containerElement={MapContainer}
+      mapElement={MapContainer}
+    >
+      <div className={styles.km__point} />
+    </Map>
+    <div className='section container'>
+      <div className='tile is-ancestor'>
+        <div className='tile is-8 is-vertical is-parent'>
+          <div className='tile is-child box'>
+            <p className='title'>MY ORDERS</p>
+            <OrderList carts={props.carts} />
+          </div>
+          <div className='tile is-child box'>
+            <p className='title'>SUMMARY</p>
+          </div>
+        </div>
+        <div className='tile is-parent'>
+          <div className='tile is-child box'>
+            <p className='title'>CHECKOUT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)
+
+CheckOutPage.propTypes = {
+  carts: PropTypes.object.isRequired
 }
 
 export default CheckOutPage

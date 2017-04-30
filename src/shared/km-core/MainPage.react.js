@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import CheckOutPage from '../km-checkout/CheckOutPage.react'
+import CheckOutPage from '../km-checkout/CheckOutPageContainer.react'
 import Footer from '../km-footer/Footer.react'
 import Navbar from '../km-uikits/NavBarContainer.react'
 import PropTypes from 'prop-types'
