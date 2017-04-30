@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -14,9 +15,9 @@ const RestaurantItem = ({ restaurant }) => {
           <div className='media'>
             <div className='media-content'>
               <p className='title is-4'>
-                <a href={`/${restaurant.id}`}>
+                <Link to={`/${restaurant.id}`}>
                   {restaurant.name}
-                </a>
+                </Link>
               </p>
               <p className='subtitle is-6'>@{restaurant.place}</p>
             </div>

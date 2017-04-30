@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React from 'react'
 import className from 'classnames'
@@ -9,17 +10,17 @@ const Navbar = (props) => {
     <nav className='nav has-shadow'>
       <div className='container'>
         <div className='nav-left'>
-          <a href='/' className='nav-item'>
+          <Link to='/' className='nav-item'>
             <img src='/logo.png' />
-          </a>
+          </Link>
         </div>
         <div className='nav-right nav-menu'>
-          <a className={className('nav-item', 'is-tab', { [styles['cart__not-empty']]: menuLength > 0 })}>
+          <Link to='/checkout' className={className('nav-item', 'is-tab', { [styles['cart__not-empty']]: menuLength > 0 })}>
             <span className='icon is-danger' style={{ marginRight: '8px' }}>
               <i className='fa fa-shopping-cart' />
             </span>
             <span>{menuLength}</span>
-          </a>
+          </Link>
           <a className='nav-item is-tab'>
             <span className='icon is-danger' style={{ marginRight: '8px' }}>
               <i className='fa fa-user' />
