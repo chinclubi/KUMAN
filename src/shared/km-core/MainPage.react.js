@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import CheckOutPage from '../km-checkout/CheckOutPage.react'
 import Footer from '../km-footer/Footer.react'
 import Navbar from '../km-uikits/NavBarContainer.react'
 import PropTypes from 'prop-types'
@@ -20,7 +21,8 @@ class MainPage extends Component {
       <div>
         <Navbar />
         <Route exact path={`${match.url}`} component={RestaurantList} />
-        <Route path={`${match.url}:restaurantId`} component={RestaurantPage} />
+        <Route exact path={`${match.url}:restaurantId`} component={RestaurantPage} />
+        <Route exact path={`${match.url}:restaurantId/checkout`} component={CheckOutPage} />
         <Footer />
       </div>
     )

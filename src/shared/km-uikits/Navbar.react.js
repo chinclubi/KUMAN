@@ -4,8 +4,8 @@ import React from 'react'
 import className from 'classnames'
 import styles from './NavBar.styl'
 
-const Navbar = (props) => {
-  const menuLength = Object.keys(props.carts).length
+const Navbar = ({ carts, location: { pathname } }) => {
+  const menuLength = Object.keys(carts).length
   return (
     <nav className='nav has-shadow'>
       <div className='container'>
@@ -15,12 +15,21 @@ const Navbar = (props) => {
           </Link>
         </div>
         <div className='nav-right nav-menu'>
-          <Link to='/checkout' className={className('nav-item', 'is-tab', { [styles['cart__not-empty']]: menuLength > 0 })}>
-            <span className='icon is-danger' style={{ marginRight: '8px' }}>
-              <i className='fa fa-shopping-cart' />
-            </span>
-            <span>{menuLength}</span>
-          </Link>
+          { menuLength === 0 ? (
+            <div className='nav-item is-tab'>
+              <span className='icon is-danger' style={{ marginRight: '8px' }}>
+                <i className='fa fa-shopping-cart' />
+              </span>
+              <span>0</span>
+            </div>
+          ) : (
+            <Link to={`${pathname}/checkout`} className={className('nav-item', 'is-tab', styles['cart__not-empty'])}>
+              <span className='icon is-danger' style={{ marginRight: '8px' }}>
+                <i className='fa fa-shopping-cart' />
+              </span>
+              <span>{menuLength}</span>
+            </Link>
+          )}
           <a className='nav-item is-tab'>
             <span className='icon is-danger' style={{ marginRight: '8px' }}>
               <i className='fa fa-user' />
@@ -34,10 +43,13 @@ const Navbar = (props) => {
       </div>
     </nav>
   )
-          }
+}
 
 Navbar.propTypes = {
-  carts: PropTypes.object.isRequired
+  carts: PropTypes.object.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired
 }
 
 export default Navbar
