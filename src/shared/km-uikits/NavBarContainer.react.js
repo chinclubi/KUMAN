@@ -14,7 +14,7 @@ const enhance = compose(
 )
 
 const NavBarContainer = (props) => (
-  <NavBar carts={props.carts} />
+  <NavBar {...props} />
 )
 
 NavBarContainer.propTypes = {

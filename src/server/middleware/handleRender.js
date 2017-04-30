@@ -12,6 +12,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router'
+import createStore from '../../shared/km-store/createStore'
 import fs from 'fs'
 import path from 'path'
 
@@ -26,8 +27,10 @@ const handleRender = (req, res) => {
       }
     })
   })
+  const store = createStore(client)
+
   const app = (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client} store={store}>
       <StaticRouter location={req.url} context={context}>
         <AppComponent />
       </StaticRouter>
