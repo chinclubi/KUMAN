@@ -11,7 +11,7 @@ const Loader = (props) => (
 )
 
 Loader.propTypes = {
-  size: PropTypes.oneOf([ 'small', 'big' ]),
+  size: PropTypes.oneOf(PropTypes.bool, PropTypes.oneOf([ 'small', 'big' ])),
   message: PropTypes.string
 }
 

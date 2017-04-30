@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const Menu = ({ menu: { name, price, thumbnail } }) => (
+const Menu = ({ menu: { id, name, price, thumbnail }, AddToCart }) => (
   <div className='column is-one-third'>
     <div className='box'>
       <article className='media'>
@@ -20,7 +20,7 @@ const Menu = ({ menu: { name, price, thumbnail } }) => (
           </div>
           <nav className='level'>
             <div className='level-left'>
-              <a className='level-item'>
+              <a className='level-item' onClick={() => AddToCart({ id, name, thumbnail, price })}>
                 <span className='icon'>
                   <i className='fa fa-cart-plus' />
                 </span>
@@ -39,7 +39,8 @@ Menu.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  AddToCart: PropTypes.func.isRequired
 }
 
 export default Menu

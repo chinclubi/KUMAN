@@ -1,9 +1,12 @@
+import * as CartActions from '../km-modules/cart/cartActions'
+
 import { gql, graphql } from 'react-apollo'
 
 import PropTypes from 'prop-types'
 import React from 'react'
 import RestaurantPage from './RestaurantPage.react'
 import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import withLoader from '../km-middleware/withLoader.react'
 
 const RestaurantQuery = gql`
@@ -15,6 +18,7 @@ const RestaurantQuery = gql`
       place
     }
     menus (restaurantId: $restaurantId) {
+      id
       name
       price
       thumbnail
@@ -29,11 +33,15 @@ const enhance = compose(
       }
     })
   }),
-  withLoader
+  withLoader,
+  connect(
+    ({ carts }) => ({ carts }),
+    CartActions
+  )
 )
 
-const RestaurantPageContainer = ({ data: { restaurant, menus }, match }) => (
-  <RestaurantPage restaurant={restaurant} menus={menus} />
+const RestaurantPageContainer = ({ data: { restaurant, menus }, match, Add }) => (
+  <RestaurantPage restaurant={restaurant} menus={menus} AddToCart={Add} />
 )
 
 RestaurantPageContainer.propTypes = {
@@ -52,7 +60,8 @@ RestaurantPageContainer.propTypes = {
       price: PropTypes.number.isRequired,
       thumbnail: PropTypes.string.isRequired
     }))
-  })
+  }),
+  Add: PropTypes.func.isRequired
 }
 
 export default enhance(RestaurantPageContainer)

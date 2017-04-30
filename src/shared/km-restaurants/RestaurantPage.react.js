@@ -11,11 +11,16 @@ class RestaurantPage extends React.Component {
       place: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired
     }),
-    menus: PropTypes.array.isRequired
+    menus: PropTypes.array.isRequired,
+    AddToCart: PropTypes.func.isRequired,
+  }
+
+  addToCart = (menu) => {
+    this.props.AddToCart(menu)
   }
 
   renderMenuList = (menus) => (
-    menus.map((menu, i) => <Menu key={i} menu={menu} />)
+    menus.map((menu, i) => <Menu key={i} menu={menu} AddToCart={this.addToCart} />)
   )
 
   render () {

@@ -1,0 +1,2 @@
+export const ADD_MENU_TO_CART = 'ADD_MENU_TO_CART'
+export const GET_MENUS_IN_CART = 'GET_MENUS_IN_CART'

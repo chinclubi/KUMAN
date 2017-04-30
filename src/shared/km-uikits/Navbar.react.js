@@ -14,7 +14,7 @@ const Navbar = (props) => (
           <span className='icon is-danger' style={{ marginRight: '8px' }}>
             <i className='fa fa-shopping-cart' />
           </span>
-          <span>{props.carts.length}</span>
+          <span>{Object.keys(props.carts).length}</span>
         </a>
         <a className='nav-item is-tab'>
           <span className='icon is-danger' style={{ marginRight: '8px' }}>
@@ -31,7 +31,7 @@ const Navbar = (props) => (
 )
 
 Navbar.propTypes = {
-  carts: PropTypes.array.isRequired
+  carts: PropTypes.object.isRequired
 }
 
 export default Navbar
