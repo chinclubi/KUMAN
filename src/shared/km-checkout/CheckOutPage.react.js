@@ -2,6 +2,7 @@ import Map from './GoogleMap.react'
 import OrderList from './OrderList.react'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Summary from './Summary.react'
 import styles from './CheckOutPage.styl'
 
 const MapContainer = <div className={styles.km__map} />
@@ -23,6 +24,7 @@ const CheckOutPage = (props) => (
           </div>
           <div className='tile is-child box'>
             <p className='title'>SUMMARY</p>
+            <Summary carts={props.carts} />
           </div>
         </div>
         <div className='tile is-parent'>
