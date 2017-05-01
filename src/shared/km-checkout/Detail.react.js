@@ -6,7 +6,9 @@ class Detail extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      isLater: false
+      isLater: false,
+      phone: '',
+      direction: ''
     }
   }
 
@@ -16,7 +18,12 @@ class Detail extends React.Component {
     })
   }
 
+  onInputChange = ({ currentTarget: { name, value } }) => {
+    this.setState({ [name]: value })
+  }
+
   render () {
+    console.log('state', this.state.phone === '')
     return (
       <section>
         <div className='field is-horizontal'>
@@ -50,11 +57,19 @@ class Detail extends React.Component {
           <div className='field-body'>
             <div className='field'>
               <div className='control'>
-                <input className='input is-danger' type='text' placeholder='e.g. 6682-482-2222' />
+                <input
+                  name='phone'
+                  className='input'
+                  type='text'
+                  placeholder='e.g. 6682-482-2222'
+                  onChange={this.onInputChange}
+                />
               </div>
-              <p className='help is-danger'>
-                This field is required
-              </p>
+              { this.state.phone === '' && (
+                <p className='help is-danger'>
+                  This field is required
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -65,11 +80,19 @@ class Detail extends React.Component {
           <div className='field-body'>
             <div className='field'>
               <div className='control'>
-                <textarea className='textarea' rows='2' placeholder='Explain how we can find you' />
+                <textarea
+                  name='direction'
+                  className='textarea'
+                  rows='2'
+                  placeholder='Explain how we can find you'
+                  onChange={this.onInputChange}
+                />
               </div>
-              <p className='help is-danger'>
-                This field is required
-              </p>
+              { this.state.direction === '' && (
+                <p className='help is-danger'>
+                  This field is required
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -140,7 +163,9 @@ class Detail extends React.Component {
         </div>
         <div className='field is-grouped'>
           <p className='control'>
-            <button className='button is-primary'>
+            <button className='button is-primary' disabled={
+              (this.state.direction === '') || (this.state.phone === '')
+            }>
               <span className='icon is-small'>
                 <i className='fa fa-cart-arrow-down' />
               </span>
