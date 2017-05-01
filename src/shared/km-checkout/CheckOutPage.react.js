@@ -17,18 +17,21 @@ const CheckOutPage = (props) => (
       <div className={styles.km__point} />
     </Map>
     <div className='section container'>
+      <h3 className='title'>
+        <strong>CHECK OUT</strong>
+      </h3>
       <div className='tile is-ancestor'>
         <div className='tile is-6 is-vertical is-parent'>
           <div className='tile is-child box'>
             <p className='title'>MY ORDERS</p>
             <OrderList carts={props.carts} />
           </div>
+        </div>
+        <div className='tile is-vertical is-parent'>
           <div className='tile is-child box'>
             <p className='title'>SUMMARY</p>
             <Summary carts={props.carts} />
           </div>
-        </div>
-        <div className='tile is-parent'>
           <div className='tile is-child box'>
             <p className='title'>DETAIL</p>
             <Detail />
