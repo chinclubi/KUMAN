@@ -17,7 +17,7 @@ const CheckOutPage = (props) => (
       <div className={styles.km__point} />
     </Map>
     <div className='section container'>
-      <h3 className='title'>
+      <h3 className='title' style={{ textAlign: 'center' }}>
         <strong>CHECK OUT</strong>
       </h3>
       <div className='tile is-ancestor'>
