@@ -1,3 +1,4 @@
+import Detail from './Detail.react'
 import Map from './GoogleMap.react'
 import OrderList from './OrderList.react'
 import PropTypes from 'prop-types'
@@ -17,7 +18,7 @@ const CheckOutPage = (props) => (
     </Map>
     <div className='section container'>
       <div className='tile is-ancestor'>
-        <div className='tile is-8 is-vertical is-parent'>
+        <div className='tile is-6 is-vertical is-parent'>
           <div className='tile is-child box'>
             <p className='title'>MY ORDERS</p>
             <OrderList carts={props.carts} />
@@ -29,7 +30,8 @@ const CheckOutPage = (props) => (
         </div>
         <div className='tile is-parent'>
           <div className='tile is-child box'>
-            <p className='title'>CHECKOUT</p>
+            <p className='title'>DETAIL</p>
+            <Detail />
           </div>
         </div>
       </div>
