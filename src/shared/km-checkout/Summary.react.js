@@ -34,7 +34,7 @@ const Summary = (props) => {
 }
 
 Summary.propTypes = {
-  carts: PropTypes.objectOf({
+  carts: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,

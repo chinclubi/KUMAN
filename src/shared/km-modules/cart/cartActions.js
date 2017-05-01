@@ -5,6 +5,6 @@ export const Add = menu => ({
   menu
 })
 
-export const GetAll = () => ({
-  type: actionTypes.GET_MENUS_IN_CART
+export const Clear = () => ({
+  type: actionTypes.CLEAR_CART
 })

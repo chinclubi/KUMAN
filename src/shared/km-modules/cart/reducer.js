@@ -17,6 +17,8 @@ export default (state = initState, action) => {
         })
       }
     }
+    case actionTypes.CLEAR_CART:
+      return {}
     default:
       return state
   }

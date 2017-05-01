@@ -34,8 +34,8 @@ const enhance = compose(
   )
 )
 
-const SuccessPageContainer = ({ data: { restaurant } }) => (
-  <SuccessPage restaurant={restaurant} />
+const SuccessPageContainer = ({ data: { restaurant }, Clear }) => (
+  <SuccessPage restaurant={restaurant} clearCart={Clear} />
 )
 
 SuccessPageContainer.propTypes = {
@@ -46,7 +46,8 @@ SuccessPageContainer.propTypes = {
       image: PropTypes.string.isRequired,
       place: PropTypes.string.isRequired
     })
-  })
+  }).isRequired,
+  Clear: PropTypes.func.isRequired
 }
 
 export default enhance(SuccessPageContainer)

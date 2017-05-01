@@ -9,7 +9,12 @@ class SuccessPage extends React.Component {
       name: PropTypes.string.isRequired,
       place: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired
-    }),
+    }).isRequired,
+    clearCart: PropTypes.func.isRequired,
+  }
+
+  componentDidMount () {
+    this.props.clearCart()
   }
 
   render () {
