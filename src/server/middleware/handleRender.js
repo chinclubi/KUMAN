@@ -56,6 +56,7 @@ const Html = ({ content, state, assets }) => (
       <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,400,700' />
       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css' />
+      <link rel='stylesheet' type='text/css' href='/notifications.css' />
       <script
         type='text/javascript'
         src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDy1WhMAzw7_3jTw-qVXgiRLZApm-9Ijc4&libraries=geometry,places,visualization'

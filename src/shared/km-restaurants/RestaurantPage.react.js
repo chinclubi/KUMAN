@@ -1,3 +1,5 @@
+import { NotificationContainer, NotificationManager } from 'react-notifications'
+
 import BigHero from '../km-banners/BigHero.react'
 import Menu from '../km-menus/Menu.react'
 import PropTypes from 'prop-types'
@@ -16,12 +18,17 @@ class RestaurantPage extends React.Component {
   }
 
   addToCart = (menu) => {
+    this.createNotification()
     this.props.AddToCart(menu)
   }
 
   renderMenuList = (menus) => (
     menus.map((menu, i) => <Menu key={i} menu={menu} AddToCart={this.addToCart} />)
   )
+
+  createNotification = () => {
+    NotificationManager.success('ADDED', '', 2000)
+  }
 
   render () {
     const { restaurant, menus } = this.props
@@ -37,6 +44,7 @@ class RestaurantPage extends React.Component {
             {this.renderMenuList(menus)}
           </div>
         </div>
+        <NotificationContainer />
       </section>
     )
   }
