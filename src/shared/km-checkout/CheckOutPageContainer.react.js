@@ -10,8 +10,8 @@ const enhance = compose(
   )
 )
 
-const CheckOutPageContainer = ({ carts }) => (
-  <CheckOutPage carts={carts} />
+const CheckOutPageContainer = ({ carts, match }) => (
+  <CheckOutPage carts={carts} match={match} />
 )
 
 CheckOutPageContainer.propTypes = {
@@ -23,7 +23,8 @@ CheckOutPageContainer.propTypes = {
       price: PropTypes.number.isRequired,
       count: PropTypes.number.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default enhance(CheckOutPageContainer)

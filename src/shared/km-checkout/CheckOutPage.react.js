@@ -34,7 +34,7 @@ const CheckOutPage = (props) => (
           </div>
           <div className='tile is-child box'>
             <p className='title'>DETAIL</p>
-            <Detail />
+            <Detail match={props.match} />
           </div>
         </div>
       </div>
@@ -43,7 +43,8 @@ const CheckOutPage = (props) => (
 )
 
 CheckOutPage.propTypes = {
-  carts: PropTypes.object.isRequired
+  carts: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default CheckOutPage

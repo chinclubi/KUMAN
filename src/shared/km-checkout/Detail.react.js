@@ -1,8 +1,18 @@
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import React from 'react'
 import className from 'classnames'
 import styles from './Detail.styl'
 
 class Detail extends React.Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        restaurantId: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -23,7 +33,6 @@ class Detail extends React.Component {
   }
 
   render () {
-    console.log('state', this.state.phone === '')
     return (
       <section>
         <div className='field is-horizontal'>
@@ -163,7 +172,7 @@ class Detail extends React.Component {
         </div>
         <div className='field is-grouped'>
           <p className='control'>
-            <button className='button is-primary' disabled={
+            <Link to={`success`} className='button is-primary' disabled={
               (this.state.direction === '') || (this.state.phone === '')
             }>
               <span className='icon is-small'>
@@ -172,7 +181,7 @@ class Detail extends React.Component {
               <span>
                 Place Your Order
               </span>
-            </button>
+            </Link>
           </p>
           <p className='control'>
             <button className='button is-link'>Cancel</button>

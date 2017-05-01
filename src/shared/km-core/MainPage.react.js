@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import RestaurantList from '../km-homepage/RestaurantListContainer.react'
 import RestaurantPage from '../km-restaurants/RestaurantPageContainer.react'
 import { Route } from 'react-router-dom'
+import SuccessPage from '../km-success/SuccessPageContainer.react'
 
 class MainPage extends Component {
   static propTypes = {
@@ -22,6 +23,7 @@ class MainPage extends Component {
         <Navbar />
         <Route exact path={`${match.url}`} component={RestaurantList} />
         <Route exact path={`${match.url}:restaurantId`} component={RestaurantPage} />
+        <Route exact path={`${match.url}:restaurantId/success`} component={SuccessPage} />
         <Route exact path={`${match.url}:restaurantId/checkout`} component={CheckOutPage} />
         <Footer />
       </div>
